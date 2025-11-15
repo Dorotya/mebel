@@ -1,0 +1,536 @@
+{
+  "furniture": [
+    {
+      "id": "1",
+      "name": "Рабочий стол 'Модерн'",
+      "type": "table",
+      "color": "коричневый",
+      "price": 12000,
+      "image": "/images/tables/table1.jpg",
+      "description": "Прочный и стильный письменный стол из натурального дерева. Идеально подходит для домашнего офиса.",
+      "gallery": [
+        "/images/tables/table1.2.jpg",
+        "/images/tables/table 1.3.jpg"
+      ],
+      "availableMaterials": [
+        "дуб",
+        "ясень",
+        "сосна",
+        "стекло"
+      ],
+      "availableColors": [
+        "коричневый",
+        "белый",
+        "черный",
+        "натуральный"
+      ],
+      "defaultModel": {
+        "baseItemId": 1,
+        "name": "Базовая конфигурация",
+        "dimensions": {
+          "width": 120,
+          "height": 75,
+          "depth": 60
+        },
+        "totalPrice": 12000,
+        "elements": [
+          {
+            "id": "top",
+            "name": "Столешница",
+            "type": "tabletop",
+            "material": "дуб",
+            "color": "коричневый",
+            "dimensions": {
+              "width": 120,
+              "height": 4,
+              "depth": 60
+            },
+            "position": {
+              "x": 0,
+              "y": 71,
+              "z": 0
+            },
+            "canBeModified": true
+          },
+          {
+            "id": "leg1",
+            "name": "Ножка 1",
+            "type": "leg",
+            "material": "металл",
+            "color": "черный",
+            "dimensions": {
+              "width": 4,
+              "height": 71,
+              "depth": 4
+            },
+            "position": {
+              "x": -58,
+              "y": 0,
+              "z": -28
+            },
+            "canBeModified": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Шкаф-купе 'Гармония'",
+      "type": "wardrobe",
+      "color": "белый",
+      "price": 25000,
+      "image": "/images/staff/staff1.jpg",
+      "description": "Вместительный шкаф-купе с системой раздвижных дверей. Большое внутреннее пространство.",
+      "gallery": [
+        "/images/staff/staff1.1.webp",
+        "/images/staff/staff1.2.jpg",
+        "/images/staff/staff2.webp",
+        "/images/staff/staff2.1.jpg",
+        "/images/staff/staff2.2.webp",
+        "/images/staff/staff3.2.jpg"
+      ],
+      "availableMaterials": [
+        "ЛДСП",
+        "МДФ",
+        "массив"
+      ],
+      "availableColors": [
+        "белый",
+        "серый",
+        "черный",
+        "дуб"
+      ],
+      "defaultModel": {
+        "baseItemId": 2,
+        "name": "Базовая конфигурация",
+        "dimensions": {
+          "width": 200,
+          "height": 220,
+          "depth": 60
+        },
+        "totalPrice": 25000,
+        "elements": [
+          {
+            "id": "body",
+            "name": "Корпус",
+            "type": "body",
+            "material": "ЛДСП",
+            "color": "белый",
+            "dimensions": {
+              "width": 200,
+              "height": 220,
+              "depth": 60
+            },
+            "position": {
+              "x": 0,
+              "y": 110,
+              "z": 0
+            },
+            "canBeModified": false
+          },
+          {
+            "id": "shelf1",
+            "name": "Полка 1",
+            "type": "shelf",
+            "material": "ЛДСП",
+            "color": "белый",
+            "dimensions": {
+              "width": 190,
+              "height": 2,
+              "depth": 50
+            },
+            "position": {
+              "x": 0,
+              "y": 160,
+              "z": 0
+            },
+            "canBeModified": true
+          },
+          {
+            "id": "shelf2",
+            "name": "Полка 2",
+            "type": "shelf",
+            "material": "ЛДСП",
+            "color": "белый",
+            "dimensions": {
+              "width": 190,
+              "height": 2,
+              "depth": 50
+            },
+            "position": {
+              "x": 0,
+              "y": 100,
+              "z": 0
+            },
+            "canBeModified": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Диван 'Комфорт'",
+      "type": "sofa",
+      "color": "серый",
+      "price": 35000,
+      "image": "/images/sofa/sofa1.1.jpg",
+      "description": "Удобный трехместный диван с ортопедическим основанием. Идеален для гостиной.",
+      "gallery": [
+        "/images/sofa/sofa1.2.jpg",
+        "/images/sofa/sofa1.jpeg",
+        "/images/sofa/sofa2.1.jpg",
+        "/images/sofa/sofa2.2.jpg",
+        "/images/sofa/sofa2.jpg",
+        "/images/sofa/sofa3.1.jpg",
+        "/images/sofa/sofa3.2.jpg",
+        "/images/sofa/sofa3.webp"
+      ],
+      "availableMaterials": [
+        "ткань",
+        "кожа",
+        "экокожа"
+      ],
+      "availableColors": [
+        "серый",
+        "бежевый",
+        "коричневый",
+        "черный"
+      ],
+      "defaultModel": {
+        "baseItemId": 3,
+        "name": "Базовая конфигурация",
+        "dimensions": {
+          "width": 200,
+          "height": 90,
+          "depth": 95
+        },
+        "totalPrice": 35000,
+        "elements": [
+          {
+            "id": "seat",
+            "name": "Сидушка",
+            "type": "seat",
+            "material": "ткань",
+            "color": "серый",
+            "dimensions": {
+              "width": 190,
+              "height": 25,
+              "depth": 85
+            },
+            "position": {
+              "x": 0,
+              "y": 40,
+              "z": 0
+            },
+            "canBeModified": true
+          },
+          {
+            "id": "back",
+            "name": "Спинка",
+            "type": "back",
+            "material": "ткань",
+            "color": "серый",
+            "dimensions": {
+              "width": 190,
+              "height": 65,
+              "depth": 10
+            },
+            "position": {
+              "x": 0,
+              "y": 72,
+              "z": -47
+            },
+            "canBeModified": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "name": "Угловой диван 'Премиум'",
+      "type": "sofa",
+      "color": "бежевый",
+      "price": 45000,
+      "image": "/images/sofa/sofa2.jpg",
+      "description": "Роскошный угловой диван с увеличенной посадочной площадью. Подходит для больших гостиных.",
+      "gallery": [
+        "/images/sofa/sofa2.1.jpg",
+        "/images/sofa/sofa2.2.jpg"
+      ],
+      "availableMaterials": [
+        "ткань",
+        "кожа",
+        "экокожа",
+        "велюр"
+      ],
+      "availableColors": [
+        "бежевый",
+        "серый",
+        "коричневый",
+        "бордовый"
+      ],
+      "defaultModel": {
+        "baseItemId": 4,
+        "name": "Базовая конфигурация",
+        "dimensions": {
+          "width": 280,
+          "height": 85,
+          "depth": 160
+        },
+        "totalPrice": 45000,
+        "elements": [
+          {
+            "id": "seat-main",
+            "name": "Основная сидушка",
+            "type": "seat",
+            "material": "ткань",
+            "color": "бежевый",
+            "dimensions": {
+              "width": 180,
+              "height": 25,
+              "depth": 90
+            },
+            "position": {
+              "x": 0,
+              "y": 40,
+              "z": 0
+            },
+            "canBeModified": true
+          },
+          {
+            "id": "seat-corner",
+            "name": "Угловая сидушка",
+            "type": "seat",
+            "material": "ткань",
+            "color": "бежевый",
+            "dimensions": {
+              "width": 90,
+              "height": 25,
+              "depth": 90
+            },
+            "position": {
+              "x": 45,
+              "y": 40,
+              "z": 45
+            },
+            "canBeModified": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "name": "Компьютерный стол 'Профи'",
+      "type": "table",
+      "color": "белый",
+      "price": 15000,
+      "image": "/images/tables/table1.2.jpg",
+      "description": "Эргономичный компьютерный стол с отделениями для системного блока и полками для аксессуаров.",
+      "gallery": [
+        "/images/tables/table1.jpg",
+        "/images/tables/table 1.3.jpg"
+      ],
+      "availableMaterials": [
+        "ЛДСП",
+        "МДФ",
+        "стекло",
+        "металл"
+      ],
+      "availableColors": [
+        "белый",
+        "черный",
+        "серый",
+        "орех"
+      ],
+      "defaultModel": {
+        "baseItemId": 5,
+        "name": "Базовая конфигурация",
+        "dimensions": {
+          "width": 140,
+          "height": 75,
+          "depth": 70
+        },
+        "totalPrice": 15000,
+        "elements": [
+          {
+            "id": "top",
+            "name": "Столешница",
+            "type": "tabletop",
+            "material": "ЛДСП",
+            "color": "белый",
+            "dimensions": {
+              "width": 140,
+              "height": 2,
+              "depth": 70
+            },
+            "position": {
+              "x": 0,
+              "y": 73,
+              "z": 0
+            },
+            "canBeModified": true
+          },
+          {
+            "id": "shelf",
+            "name": "Полка для клавиатуры",
+            "type": "shelf",
+            "material": "ЛДСП",
+            "color": "белый",
+            "dimensions": {
+              "width": 60,
+              "height": 2,
+              "depth": 40
+            },
+            "position": {
+              "x": 0,
+              "y": 60,
+              "z": 15
+            },
+            "canBeModified": true
+          }
+        ]
+      }
+    }
+  ],
+  "customModels": [
+    {
+      "id": "3a2f",
+      "baseItemId": 2,
+      "name": "Базовая конфигурация",
+      "dimensions": {
+        "width": 200,
+        "height": 220,
+        "depth": 60
+      },
+      "totalPrice": 25000,
+      "elements": [
+        {
+          "id": "body",
+          "name": "Корпус",
+          "type": "body",
+          "material": "ЛДСП",
+          "color": "белый",
+          "dimensions": {
+            "width": 200,
+            "height": 220,
+            "depth": 60
+          },
+          "position": {
+            "x": 0,
+            "y": 110,
+            "z": 0
+          },
+          "canBeModified": false
+        },
+        {
+          "id": "shelf1",
+          "name": "Полка 1",
+          "type": "shelf",
+          "material": "ЛДСП",
+          "color": "белый",
+          "dimensions": {
+            "width": 190,
+            "height": 2,
+            "depth": 50
+          },
+          "position": {
+            "x": 0,
+            "y": 160,
+            "z": 0
+          },
+          "canBeModified": true
+        },
+        {
+          "id": "shelf2",
+          "name": "Полка 2",
+          "type": "shelf",
+          "material": "ЛДСП",
+          "color": "белый",
+          "dimensions": {
+            "width": 190,
+            "height": 2,
+            "depth": 50
+          },
+          "position": {
+            "x": 0,
+            "y": 100,
+            "z": 0
+          },
+          "canBeModified": true
+        },
+        {
+          "id": "shelf-1763219469127",
+          "name": "Полка 3",
+          "type": "shelf",
+          "material": "ЛДСП",
+          "color": "белый",
+          "dimensions": {
+            "width": 190,
+            "height": 2,
+            "depth": 50
+          },
+          "position": {
+            "x": 0,
+            "y": 128,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "canBeModified": true
+        }
+      ]
+    },
+    {
+      "id": "f4ad",
+      "baseItemId": 3,
+      "name": "Базовая конфигурация",
+      "dimensions": {
+        "width": 200,
+        "height": 90,
+        "depth": 95
+      },
+      "totalPrice": 52500,
+      "elements": [
+        {
+          "id": "seat",
+          "name": "Сидушка",
+          "type": "seat",
+          "material": "ткань",
+          "color": "бежевый",
+          "dimensions": {
+            "width": 190,
+            "height": 25,
+            "depth": 85
+          },
+          "position": {
+            "x": 0,
+            "y": 40,
+            "z": 0
+          },
+          "canBeModified": true
+        },
+        {
+          "id": "back",
+          "name": "Спинка",
+          "type": "back",
+          "material": "кожа",
+          "color": "коричневый",
+          "dimensions": {
+            "width": 190,
+            "height": 65,
+            "depth": 10
+          },
+          "position": {
+            "x": 0,
+            "y": 72,
+            "z": -47
+          },
+          "canBeModified": true
+        }
+      ]
+    }
+  ]
+}
