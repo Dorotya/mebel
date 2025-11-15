@@ -531,6 +531,109 @@
           "canBeModified": true
         }
       ]
+    },
+    {
+      "id": "94f6",
+      "baseItemId": 1,
+      "name": "Базовая конфигурация",
+      "dimensions": {
+        "width": 120,
+        "height": 75,
+        "depth": 60
+      },
+      "totalPrice": 14400,
+      "elements": [
+        {
+          "id": "top",
+          "name": "Столешница",
+          "type": "tabletop",
+          "material": "дуб",
+          "color": "натуральный",
+          "dimensions": {
+            "width": 120,
+            "height": 4,
+            "depth": 60
+          },
+          "position": {
+            "x": 0,
+            "y": 71,
+            "z": 0
+          },
+          "canBeModified": true
+        },
+        {
+          "id": "leg1",
+          "name": "Ножка 1",
+          "type": "leg",
+          "material": "металл",
+          "color": "белый",
+          "dimensions": {
+            "width": 4,
+            "height": 71,
+            "depth": 4
+          },
+          "position": {
+            "x": -58,
+            "y": 0,
+            "z": -28
+          },
+          "canBeModified": true
+        }
+      ]
+    },
+    {
+      "id": "a461",
+      "baseItemId": 4,
+      "name": "Базовая конфигурация",
+      "dimensions": {
+        "width": 500,
+        "height": 300,
+        "depth": 200
+      },
+      "totalPrice": 45000,
+      "elements": [
+        {
+          "id": "seat-main",
+          "name": "Основная сидушка",
+          "type": "seat",
+          "material": "ткань",
+          "color": "бежевый",
+          "dimensions": {
+            "width": 180,
+            "height": 25,
+            "depth": 90
+          },
+          "position": {
+            "x": 0,
+            "y": 40,
+            "z": 0
+          },
+          "canBeModified": true,
+          "rotation": {
+            "y": 40,
+            "z": -112,
+            "x": -180
+          }
+        },
+        {
+          "id": "seat-corner",
+          "name": "Угловая сидушка",
+          "type": "seat",
+          "material": "ткань",
+          "color": "бежевый",
+          "dimensions": {
+            "width": 90,
+            "height": 25,
+            "depth": 90
+          },
+          "position": {
+            "x": 45,
+            "y": 40,
+            "z": 45
+          },
+          "canBeModified": true
+        }
+      ]
     }
   ]
 }

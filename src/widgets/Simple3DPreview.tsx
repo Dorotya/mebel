@@ -1,10 +1,17 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { FurnitureModel, FurnitureElement } from '../types/furniture';
 
+// Определяем интерфейс с вращением здесь
+interface FurnitureElementWithRotation extends FurnitureElement {
+    rotation: { x: number; y: number; z: number };
+}
+
 interface Simple3DPreviewProps {
     model: FurnitureModel;
-    activeElement: FurnitureElement | null;
-    onElementSelect: (element: FurnitureElement) => void;
+    activeElement: FurnitureElementWithRotation | null;
+    onElementSelect: (element: FurnitureElementWithRotation | null) => void;
+    viewRotation: { x: number; y: number };
+    onViewRotate: (rotation: { x: number; y: number }) => void;
 }
 
 // Цветовая палитра для преобразования названий в HEX
@@ -37,7 +44,9 @@ const SCALE_CONFIG = {
 const Simple3DPreview: React.FC<Simple3DPreviewProps> = ({
                                                              model,
                                                              activeElement,
-                                                             onElementSelect
+                                                             onElementSelect,
+                                                             viewRotation,
+                                                             onViewRotate
                                                          }) => {
     const [rotation, setRotation] = useState({ x: 25, y: 45 });
     const [isDragging, setIsDragging] = useState(false);
@@ -62,21 +71,26 @@ const Simple3DPreview: React.FC<Simple3DPreviewProps> = ({
         const deltaX = e.clientX - lastPosition.x;
         const deltaY = e.clientY - lastPosition.y;
 
-        setRotation(prev => ({
-            x: Math.max(-60, Math.min(60, prev.x - deltaY * 0.5)),
-            y: prev.y + deltaX * 0.5
-        }));
+        const newRotation = {
+            x: Math.max(-60, Math.min(60, rotation.x - deltaY * 0.5)),
+            y: rotation.y + deltaX * 0.5
+        };
+
+        setRotation(newRotation);
+        onViewRotate(newRotation);
 
         setLastPosition({ x: e.clientX, y: e.clientY });
-    }, [isDragging, lastPosition]);
+    }, [isDragging, lastPosition, rotation, onViewRotate]);
 
     const handleMouseUp = useCallback(() => {
         setIsDragging(false);
     }, []);
 
     const handleResetView = useCallback(() => {
-        setRotation({ x: 25, y: 45 });
-    }, []);
+        const resetRotation = { x: 25, y: 45 };
+        setRotation(resetRotation);
+        onViewRotate(resetRotation);
+    }, [onViewRotate]);
 
     // Функция для затемнения цвета
     const getDarkerColor = (color: string): string => {
@@ -125,11 +139,12 @@ const Simple3DPreview: React.FC<Simple3DPreviewProps> = ({
             SCALE_CONFIG.MIN_ELEMENT_SIZE,
             element.dimensions.height / scale * 1.3 // Увеличил множитель
         );
-        Math.max(
+        const depth = Math.max(
             SCALE_CONFIG.MIN_ELEMENT_SIZE,
             element.dimensions.depth / scale * 1.3 // Увеличил множитель
         );
-// Позиционирование элемента в сцене с учетом 3D координат
+
+        // Позиционирование элемента в сцене с учетом 3D координат
         const position = project3DTo2D(
             element.position.x,
             element.position.y,
@@ -251,7 +266,7 @@ const Simple3DPreview: React.FC<Simple3DPreviewProps> = ({
             <div
                 key={element.id}
                 style={elementStyle}
-                onClick={() => onElementSelect(element)}
+                onClick={() => onElementSelect(element as FurnitureElementWithRotation)}
                 title={`${element.name}\nМатериал: ${element.material}\nЦвет: ${element.color}`}
                 className={`preview-element ${element.type}`}
             >

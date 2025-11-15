@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Минимальные кастомные стили для дополнения Bulma */
+.furniture-card {
+    transition: transform 0.2s ease-in-out;
+    height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.furniture-card:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.gallery-thumbnail:hover,
+.gallery-thumbnail.is-active {
+    border-color: #3273dc;
+}
+
+.preview-container-3d {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    min-height: 500px;
+    cursor: grab;
+}
+
+.preview-container-3d:active {
+    cursor: grabbing;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .modal-card {
+        width: 95% !important;
+        height: 95% !important;
+    }
+
+    .preview-container-3d {
+        min-height: 300px;
+    }
 }

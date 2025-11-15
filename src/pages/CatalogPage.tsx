@@ -21,7 +21,6 @@ const CatalogPage: React.FC = () => {
         maxDepth: 200,
     });
 
-    // Загрузка данных
     useEffect(() => {
         const loadCatalog = async () => {
             try {
@@ -33,7 +32,6 @@ const CatalogPage: React.FC = () => {
             } catch (err) {
                 const errorMessage = err instanceof Error ? err.message : 'Неизвестная ошибка';
                 setError(`Ошибка при загрузке каталога: ${errorMessage}`);
-                console.error('Ошибка загрузки каталога:', err);
             } finally {
                 setLoading(false);
             }
@@ -41,18 +39,19 @@ const CatalogPage: React.FC = () => {
         loadCatalog();
     }, []);
 
-    // Применение фильтров при их изменении
     useEffect(() => {
         let result = furniture;
 
         if (filters.type) {
             result = result.filter(item => item.type === filters.type);
         }
+
         if (filters.color) {
-            result = result.filter(item => item.color.toLowerCase().includes(filters.color.toLowerCase()));
+            result = result.filter(item =>
+                item.color.toLowerCase().includes(filters.color.toLowerCase())
+            );
         }
 
-        // Фильтрация по всем размерам
         result = result.filter(item => {
             const dim = item.defaultModel.dimensions;
             return (
@@ -73,44 +72,62 @@ const CatalogPage: React.FC = () => {
     };
 
     if (loading) return <Loader />;
-    if (error) return <div className="error">{error}</div>;
+
+    if (error) return (
+        <div className="container mt-6">
+            <div className="notification is-danger">
+                <button className="delete" onClick={() => setError(null)}></button>
+                <h4 className="title is-4">Ошибка</h4>
+                <p>{error}</p>
+                <button
+                    className="button is-danger mt-3"
+                    onClick={() => window.location.reload()}
+                >
+                    Попробовать снова
+                </button>
+            </div>
+        </div>
+    );
 
     return (
-        <div className="catalog-page">
-            <h1>Каталог мебели</h1>
-            <div className="catalog-layout">
-                <aside className="filters-sidebar">
-                    <CatalogFilters
-                        filters={filters}
-                        onFilterChange={handleFilterChange}
-                    />
-                </aside>
-                <section className="catalog-grid">
-                    {filteredFurniture.length > 0 ? (
-                        filteredFurniture.map(item => (
-                            <FurnitureCard key={item.id} item={item} />
-                        ))
+        <div className="container mt-4">
+            <div className="columns">
+                <div className="column is-3">
+                    <CatalogFilters filters={filters} onFilterChange={handleFilterChange} />
+                </div>
+
+                <div className="column is-9">
+                    <div className="level">
+                        <div className="level-left">
+                            <h1 className="title is-2">Каталог мебели</h1>
+                        </div>
+                        <div className="level-right">
+                            <p className="subtitle">
+                                Найдено: <strong>{filteredFurniture.length}</strong> товаров
+                            </p>
+                        </div>
+                    </div>
+
+                    {filteredFurniture.length === 0 ? (
+                        <div className="box has-text-centered">
+              <span className="icon is-large has-text-grey-light mb-3">
+                <i className="fas fa-search fa-2x"></i>
+              </span>
+                            <p className="title is-4 has-text-grey">Товары не найдены</p>
+                            <p className="subtitle has-text-grey">
+                                Попробуйте изменить параметры фильтрации
+                            </p>
+                        </div>
                     ) : (
-                        <div className="no-results">
-                            <p>По вашему запросу ничего не найдено</p>
-                            <button
-                                onClick={() => setFilters({
-                                    type: '',
-                                    color: '',
-                                    minWidth: 0,
-                                    maxWidth: 500,
-                                    minHeight: 0,
-                                    maxHeight: 300,
-                                    minDepth: 0,
-                                    maxDepth: 200,
-                                })}
-                                className="reset-filters-btn"
-                            >
-                                Сбросить фильтры
-                            </button>
+                        <div className="columns is-multiline">
+                            {filteredFurniture.map(item => (
+                                <div key={item.id} className="column is-4">
+                                    <FurnitureCard item={item} />
+                                </div>
+                            ))}
                         </div>
                     )}
-                </section>
+                </div>
             </div>
         </div>
     );

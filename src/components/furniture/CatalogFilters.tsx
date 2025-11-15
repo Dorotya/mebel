@@ -29,83 +29,105 @@ const CatalogFilters: React.FC<CatalogFiltersProps> = ({ filters, onFilterChange
     };
 
     return (
-        <div className="catalog-filters">
-            <h3>Фильтры</h3>
+        <div className="box">
+            <h3 className="title is-4">Фильтры</h3>
 
-            <div className="filter-group">
-                <label>Тип мебели:</label>
-                <select value={filters.type} onChange={handleTypeChange}>
-                    <option value="">Все типы</option>
-                    <option value="table">Столы</option>
-                    <option value="sofa">Диваны</option>
-                    <option value="wardrobe">Шкафы</option>
-                </select>
+            <div className="field">
+                <label className="label">Тип мебели</label>
+                <div className="control">
+                    <div className="select is-fullwidth">
+                        <select value={filters.type} onChange={handleTypeChange}>
+                            <option value="">Все типы</option>
+                            <option value="table">Столы</option>
+                            <option value="sofa">Диваны</option>
+                            <option value="wardrobe">Шкафы</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <div className="filter-group">
-                <label>Цвет:</label>
-                <input
-                    type="text"
-                    value={filters.color}
-                    onChange={handleColorChange}
-                    placeholder="Введите цвет"
-                />
-            </div>
-
-            <div className="filter-group">
-                <label>Ширина: {filters.minWidth} - {filters.maxWidth} см</label>
-                <div className="range-inputs">
+            <div className="field">
+                <label className="label">Цвет</label>
+                <div className="control">
                     <input
-                        type="number"
-                        value={filters.minWidth}
-                        onChange={(e) => handleDimensionChange('minWidth', +e.target.value)}
-                        placeholder="Мин"
-                    />
-                    <span>-</span>
-                    <input
-                        type="number"
-                        value={filters.maxWidth}
-                        onChange={(e) => handleDimensionChange('maxWidth', +e.target.value)}
-                        placeholder="Макс"
+                        className="input"
+                        type="text"
+                        value={filters.color}
+                        onChange={handleColorChange}
+                        placeholder="Введите цвет"
                     />
                 </div>
             </div>
 
-            <div className="filter-group">
-                <label>Высота: {filters.minHeight} - {filters.maxHeight} см</label>
-                <div className="range-inputs">
-                    <input
-                        type="number"
-                        value={filters.minHeight}
-                        onChange={(e) => handleDimensionChange('minHeight', +e.target.value)}
-                        placeholder="Мин"
-                    />
-                    <span>-</span>
-                    <input
-                        type="number"
-                        value={filters.maxHeight}
-                        onChange={(e) => handleDimensionChange('maxHeight', +e.target.value)}
-                        placeholder="Макс"
-                    />
+            <div className="field">
+                <label className="label">Ширина: {filters.minWidth} - {filters.maxWidth} см</label>
+                <div className="field is-grouped">
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.minWidth}
+                            onChange={(e) => handleDimensionChange('minWidth', +e.target.value)}
+                            placeholder="Мин"
+                        />
+                    </div>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.maxWidth}
+                            onChange={(e) => handleDimensionChange('maxWidth', +e.target.value)}
+                            placeholder="Макс"
+                        />
+                    </div>
                 </div>
             </div>
 
-            <div className="filter-group">
-                <label>Глубина: {filters.minDepth} - {filters.maxDepth} см</label>
-                <div className="range-inputs">
-                    <input
-                        type="number"
-                        value={filters.minDepth}
-                        onChange={(e) => handleDimensionChange('minDepth', +e.target.value)}
-                        placeholder="Мин"
-                    />
-                    <span>-</span>
-                    <input
-                        type="number"
-                        value={filters.maxDepth}
-                        onChange={(e) => handleDimensionChange('maxDepth', +e.target.value)}
-                        placeholder="Макс"
-                    />
+            <div className="field">
+                <label className="label">Высота: {filters.minHeight} - {filters.maxHeight} см</label>
+                <div className="field is-grouped">
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.minHeight}
+                            onChange={(e) => handleDimensionChange('minHeight', +e.target.value)}
+                            placeholder="Мин"
+                        />
+                    </div>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.maxHeight}
+                            onChange={(e) => handleDimensionChange('maxHeight', +e.target.value)}
+                            placeholder="Макс"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Глубина: {filters.minDepth} - {filters.maxDepth} см</label>
+                <div className="field is-grouped">
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.minDepth}
+                            onChange={(e) => handleDimensionChange('minDepth', +e.target.value)}
+                            placeholder="Мин"
+                        />
+                    </div>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            type="number"
+                            value={filters.maxDepth}
+                            onChange={(e) => handleDimensionChange('maxDepth', +e.target.value)}
+                            placeholder="Макс"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

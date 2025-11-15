@@ -38,8 +38,9 @@ export interface FurnitureElement {
     material: string;
     color: string;
     dimensions: Dimensions;
-    position: ElementPosition; // Обязательно для позиционирования
-    canBeModified: boolean; // Можно ли изменять этот элемент
+    position: { x: number; y: number; z: number };
+    rotation: { x: number; y: number; z: number }; // Добавьте это
+    canBeModified: boolean;
 }
 
 // Модель мебели

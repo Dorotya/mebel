@@ -20,7 +20,7 @@ const ProductPage: React.FC = () => {
                 setLoading(true);
                 const data = await furnitureAPI.getItemById(id);
                 setItem(data);
-                setSelectedImage(data.image); // Устанавливаем главное изображение по умолчанию
+                setSelectedImage(data.image);
             } catch (err) {
                 setError('Товар не найден.');
             } finally {
@@ -44,11 +44,26 @@ const ProductPage: React.FC = () => {
     };
 
     if (loading) return <Loader />;
-    if (error) return <div className="error">{error}</div>;
-    if (!item) return <div>Товар не найден.</div>;
+
+    if (error) return (
+        <div className="container mt-6">
+            <div className="notification is-danger">
+                <h4 className="title is-4">Ошибка</h4>
+                <p>{error}</p>
+            </div>
+        </div>
+    );
+
+    if (!item) return (
+        <div className="container mt-6">
+            <div className="notification is-warning">
+                <h4 className="title is-4">Товар не найден</h4>
+            </div>
+        </div>
+    );
 
     return (
-        <div className="product-page">
+        <div className="container mt-4">
             {isConstructorOpen && item && (
                 <FurnitureConstructor
                     baseModel={item.defaultModel}
@@ -60,58 +75,79 @@ const ProductPage: React.FC = () => {
                 />
             )}
 
-            <div className="product-layout">
-                <div className="product-gallery">
-                    <div className="main-image">
-                        <img src={selectedImage} alt={item.name} />
-                    </div>
-                    <div className="gallery-thumbnails">
-                        <img
-                            src={item.image}
-                            alt="Основное"
-                            className={selectedImage === item.image ? 'active' : ''}
-                            onClick={() => setSelectedImage(item.image)}
-                        />
-                        {item.gallery.map((img, index) => (
-                            <img
-                                key={index}
-                                src={img}
-                                alt={`${item.name} ${index + 1}`}
-                                className={selectedImage === img ? 'active' : ''}
-                                onClick={() => setSelectedImage(img)}
-                            />
-                        ))}
+            <div className="columns">
+                <div className="column is-6">
+                    <div className="box">
+                        <figure className="image is-4by3">
+                            <img src={selectedImage} alt={item.name} />
+                        </figure>
+
+                        <div className="columns is-mobile is-multiline mt-3">
+                            <div className="column is-3">
+                                <figure
+                                    className={`image is-4by3 gallery-thumbnail ${selectedImage === item.image ? 'is-active' : ''}`}
+                                    onClick={() => setSelectedImage(item.image)}
+                                >
+                                    <img src={item.image} alt="Основное" />
+                                </figure>
+                            </div>
+                            {item.gallery.map((img, index) => (
+                                <div key={index} className="column is-3">
+                                    <figure
+                                        className={`image is-4by3 gallery-thumbnail ${selectedImage === img ? 'is-active' : ''}`}
+                                        onClick={() => setSelectedImage(img)}
+                                    >
+                                        <img src={img} alt={`${item.name} ${index + 1}`} />
+                                    </figure>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                <div className="product-info">
-                    <h1>{item.name}</h1>
-                    <p className="product-type">Тип: {item.type}</p>
-                    <p className="product-color">Цвет: {item.color}</p>
-                    <p className="product-price">Цена: {item.price.toLocaleString()} руб.</p>
+                <div className="column is-6">
+                    <div className="box">
+                        <h1 className="title is-2">{item.name}</h1>
 
-                    <div className="product-description">
-                        <h3>Описание</h3>
-                        <p>{item.description}</p>
+                        <div className="tags are-medium mb-4">
+                            <span className="tag is-primary">{item.type}</span>
+                            <span className="tag is-info">{item.color}</span>
+                        </div>
+
+                        <p className="title is-3 has-text-primary">
+                            {item.price.toLocaleString()} руб.
+                        </p>
+
+                        <div className="content">
+                            <h3 className="title is-4">Описание</h3>
+                            <p>{item.description}</p>
+
+                            <h3 className="title is-4 mt-5">Характеристики</h3>
+                            <div className="content">
+                                <ul>
+                                    <li><strong>Ширина:</strong> {item.defaultModel.dimensions.width} см</li>
+                                    <li><strong>Высота:</strong> {item.defaultModel.dimensions.height} см</li>
+                                    <li><strong>Глубина:</strong> {item.defaultModel.dimensions.depth} см</li>
+                                    <li><strong>Материалы:</strong> {item.availableMaterials.join(', ')}</li>
+                                    <li><strong>Цвета:</strong> {item.availableColors.join(', ')}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="field is-grouped">
+                            <div className="control">
+                                <button
+                                    className="button is-primary is-large"
+                                    onClick={handleOpenConstructor}
+                                >
+                  <span className="icon">
+                    <i className="fas fa-hammer"></i>
+                  </span>
+                                    <span>Собрать в конструкторе</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="product-details">
-                        <h3>Характеристики</h3>
-                        <ul>
-                            <li>Ширина: {item.defaultModel.dimensions.width} см</li>
-                            <li>Высота: {item.defaultModel.dimensions.height} см</li>
-                            <li>Глубина: {item.defaultModel.dimensions.depth} см</li>
-                            <li>Доступные материалы: {item.availableMaterials.join(', ')}</li>
-                            <li>Доступные цвета: {item.availableColors.join(', ')}</li>
-                        </ul>
-                    </div>
-
-                    <button
-                        onClick={handleOpenConstructor}
-                        className="btn btn-large btn-constructor"
-                    >
-                        🛠️ Собрать в конструкторе
-                    </button>
                 </div>
             </div>
         </div>
